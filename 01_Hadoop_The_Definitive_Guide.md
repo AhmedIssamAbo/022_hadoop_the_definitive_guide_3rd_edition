@@ -31,36 +31,27 @@
 ###02.本书特色内容###
 ```
 第1章 强调为什么需要 Hadoop，然后概述项目发展历史。
-
 第2章 简要介绍 MapReduce。
-
 第3章 深入剖析 Hadoop 文件系统，特别是 HDFS。
-
 第4章 包含 Hadoop 的基本I/O操作：数据完整性、压缩、序列化及基于文件的数据结构。
 
 
 第5章~第8章 深入剖析 MapReduce。
-
 第5章 全景呈现了 MapReduce 应用开发所涉及的具体步骤。
-
 第6章 从用户的角度来看如何在 Hadoop 中实现 MapReduce 。
-
 第7章 主要包含 MapReduce 编程模型和 MapReduce 可以使用的各种数据格式。
-
 第8章 MapReduce 高级主题，包括排序和数据连接。
+
 
 第9章和第10章 主要面向 Hadoop 管理员，主要描述如何在 Hadoop 集群上设置和维护运行 HDFS 和 MapReduce 。
 
 
-第11章
+第11章~第15章专门介绍在Hadoop上构建的特定项目或相关内容。
+第11章和第12章 描述的是 Pig 和 Hive，这两个分析平台构建在 HDFS 和 MapReduce 之上。
+第13章~第15章分别介绍HBase、ZooKeeper和Sqoop。
 
-第12章
 
-第1章
-
-第1章
-
-第1章
+第16章 收集了 Apache Hadoop 社区成员提供的一系列实例。
 ```
 
 <br>
