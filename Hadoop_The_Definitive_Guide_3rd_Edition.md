@@ -1,4 +1,5 @@
-Hadoop: The Definitive Guide #Hadoop权威指南#
+Hadoop: The Definitive Guide 
+#Hadoop权威指南#
 
 #Hadoop The Definitive Guide 3rd Edition#
 
