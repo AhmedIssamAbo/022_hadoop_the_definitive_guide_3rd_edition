@@ -5,6 +5,9 @@ http://archive.cloudera.com/cm5/ubuntu/trusty/amd64/cm/cloudera.list
 # Packages for Cloudera Manager, Version 5, on Ubuntu 14.04 x86_64
 deb [arch=amd64] http://archive.cloudera.com/cm5/ubuntu/trusty/amd64/cm trusty-cm5 contrib
 deb-src http://archive.cloudera.com/cm5/ubuntu/trusty/amd64/cm trusty-cm5 contrib
+
+archive.key
+http://archive.cloudera.com/cm5/ubuntu/trusty/amd64/cm/archive.key
 ```
 
 0x02. Debian 6.0 squeeze source list
