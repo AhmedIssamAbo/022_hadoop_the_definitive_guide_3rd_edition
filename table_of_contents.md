@@ -1,5 +1,6 @@
-Table of Contents
+#Hadoop : The Definitive Guide 3rd Edition#
 
+##Table of Contents##
 ```
 Foreword . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . xv
 
@@ -118,7 +119,6 @@ Profiling Tasks 179
 MapReduce Workflows 181
 Decomposing a Problem into MapReduce Jobs 181
 JobControl 183
-Table of Contents | vii
 Apache Oozie 183
 
 6. How MapReduce Works . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 189
@@ -377,7 +377,6 @@ Collection and Storage 582
 MapReduce for Logs 583
 Cascading 589
 Fields, Tuples, and Pipes 590
-Table of Contents | xiii
 Operations 593
 Taps, Schemes, and Flows 594
 Cascading in Practice 595
