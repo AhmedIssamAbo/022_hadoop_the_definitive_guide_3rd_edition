@@ -1,3 +1,4 @@
+
 0x01. Ubuntu 14.04 trusty source list
 ```
 http://archive.cloudera.com/cm5/ubuntu/trusty/amd64/cm/cloudera.list
@@ -10,6 +11,7 @@ archive.key
 http://archive.cloudera.com/cm5/ubuntu/trusty/amd64/cm/archive.key
 ```
 
+
 0x02. Debian 6.0 squeeze source list
 ```
 http://archive.cloudera.com/cm5/debian/squeeze/amd64/cm/cloudera.list
@@ -18,3 +20,4 @@ http://archive.cloudera.com/cm5/debian/squeeze/amd64/cm/cloudera.list
 deb http://archive.cloudera.com/cm5/debian/squeeze/amd64/cm squeeze-cm5 contrib
 deb-src http://archive.cloudera.com/cm5/debian/squeeze/amd64/cm squeeze-cm5 contrib
 ```
+
