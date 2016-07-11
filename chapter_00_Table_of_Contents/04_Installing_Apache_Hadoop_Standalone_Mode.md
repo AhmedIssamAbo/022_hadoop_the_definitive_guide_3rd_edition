@@ -120,43 +120,36 @@ export HADOOP_OPTS="-Djava.library.path=$HADOOP_INSTALL/lib"
 ```
 
 
-0x09. WordCount测试
+0x09. hadoop中的WordCount测试
+
 ```
-cd $HADOOP_COMMON_HOME
-ls
-mkdir input
-sudo mkdir input
-cp README.txt input
-sudo cp README.txt input
+$ hadoop version
+```
 
-cd $HADOOP_COMMON_HOME
-bin/hadoop jar share/hadoop/mapreduce/sources/hadoop-mapreduce-examples-2.6.4-sources.jar org.apache.hadoop.examples.WordCount input output
+```
+# 单机模式安装完成，下面通过执行hadoop自带实例WordCount验证是否安装成功
 
-ls
-sudo bin/hadoop jar share/hadoop/mapreduce/sources/hadoop-mapreduce-examples-2.6.4-sources.jar org.apache.hadoop.examples.WordCount input output
-vi etc/hadoop/hadoop-env.sh 
-sudo vi etc/hadoop/hadoop-env.sh 
-reset
-sudo bin/hadoop jar share/hadoop/mapreduce/sources/hadoop-mapreduce-examples-2.6.4-sources.jar org.apache.hadoop.examples.WordCount input output
-ls
-cd output/
-ls
-ls -lh
-vi part-r-00000 
-ls
-cat _SUCCESS 
-ls
-reet
-reset
-sudo bin/hadoop jar share/hadoop/mapreduce/sources/hadoop-mapreduce-examples-2.6.4-sources.jar org.apache.hadoop.examples.WordCount input output
-cd ..
-sudo rm -rf output/
-sudo bin/hadoop jar share/hadoop/mapreduce/sources/hadoop-mapreduce-examples-2.6.4-sources.jar org.apache.hadoop.examples.WordCount input output
-ls
-ls output/
-ls
-cat output/*
-exit
+# 在/usr/local/hadoop路径下创建input文件夹
+$ cd $HADOOP_COMMON_HOME
+$ sudo mkdir input
+
+# 拷贝README.txt到input
+$ sudo cp README.txt input
+
+# sudo权限执行WordCount
+$ cd $HADOOP_COMMON_HOME
+$ sudo bin/hadoop jar share/hadoop/mapreduce/sources/hadoop-mapreduce-examples-2.6.4-sources.jar org.apache.hadoop.examples.WordCount input output
+
+# 执行结果
+
+
+
+# 执行 cat output/*，查看字符统计结果
+$ ls -lh output/
+$ cat ./output/part-r-00000 
+$ cat ./output/_SUCCESS 
+$ cat output/*
+$ exit
 ```
 
 
