@@ -1,257 +1,136 @@
 ##Pseudodistributed Mode##
 ```
-In standalone mode, there is no further action to take, since the default properties are
-set for standalone mode and there are no daemons to run.
-```
-
-0x01. 
-```
-$ sudo 
-```
-
-0x02. 
-```
-$ sudo 
+The configuration files should be created with the following contents and placed in the
+conf directory (although you can place configuration files in any directory as long as
+you start the daemons with the --config option):
 ```
 
 
-0x03. 
+0x01. 配置core-site.xml
 ```
-$ sudo 
-
-# User privilege specification
-root	ALL=(ALL:ALL) ALL
-hadoop	ALL=(ALL:ALL) ALL
-```
-
-
-0x04. 
-
-0x05. 
-```
-# 01. 安装ssh
-$ sudo apt-get install openssh-server
-$ sudo apt-get install ssh
-
-# 02. 启动ssh服务
-$ sudo /etc/init.d/ssh start
-
-# 03. 验证ssh服务是否正常启动
-$ ps -e | grep "ssh"
-
-# 04. 设置免密码登录,生成私钥和公钥
-$ ssh-keygen -t rsa -P ""
-# 此时会在／home／hadoop/.ssh下生成两个文件：id_rsa和id_rsa.pub，前者为私钥，后者为公钥。
-cat /home/haddop/.ssh/id_rsa.pub >> /home/hadoop/.ssh/authorized_keys
-
-# 05. 登录ssh
-$ ssh localhost
-$ exit
-
-# 06. 再次登录ssh
-$ ssh localhost
+# /usr/local/hadoop/etc/hadoop/core-site.xml 包含了hadoop启动时的配置信息。
+# 编辑器中打开此文件
+$ sudo vi /usr/local/hadoop/etc/hadoop/core-site.xml
+<configuration>
+	<property>
+		<name>fs.default.name</name>
+		<value>hdfs://localhost:9000</value>
+		<!--
+		<value>hdfs://127.0.0.1:9000</value>
+		-->
+	</property>
+</configuration>
 ```
 
-
-0x05. 
+0x02. 配置yarn-site.xml
 ```
-$ sudo apt-get install openjdk-7-jdk
+# /usr/local/hadoop/etc/hadoop/yarn-site.xml包含了MapReduce启动时的配置信息。
+# 编辑器中打开此文件
+$ sudo vi yarn-site.xml
 
-# 查看安装结果，输入命令：java -version，结果如下表示安装成功。
-$ java -version
+<configuration>
+<!-- Site specific YARN configuration properties -->
+	<property>
+		<name>yarn.nodemanager.aux-services</name>
+		<value>mapreduce_shuffle</value>
+	</property>
+	<property>
+		<name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+		<value>org.apache.hadoop.mapred.ShuffleHandler</value>
+	</property>
+</configuration>
+
 ```
 
 
-0x06. 
+0x03. 创建和配置maper-site.xml
 ```
-# 01. 下载hadoop-2.6.4.tar.gz
-$ sudo apt-get install axel
-$ axel -n 30 http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-2.6.4/hadoop-2.6.4.tar.gz
+# 默认情况下，/usr/local/hadoop/etc/hadoop/文件夹下有mapred-site.xml.template文件，我们要复制该文件，并命名为mapred-site.xml，该文件用于指定MapReduce使用的框架。
+# 复制并重命名
+# cp mapred-site.xml.template mapred-site.xml
+# 编辑器打开此新建文件
+# sudo vi mapred-site.xml
 
-# 02. 将hadoop安装到/usr/local下
-$ sudo tar -xvf hadoop-2.6.4.tar.gz -C /usr/local/hadoop
-$ sudo tar -xvf hadoop-2.6.4.tar.gz -C /usr/local/
+<configuration>
+	<property>
+		<name>mapreduce.framework.name</name>
+		<value>yarn</value>
+	</property>
+</configuration>
 
-# 03. 赋予hadoop用户对该文件夹的读写权限
-$ cd /usr/local/
-$ sudo chown root:root hadoop-2.6.4/
-$ sudo chmod g+w /usr/local/hadoop-2.6.4/
-$ sudo ln -s hadoop-2.6.4/ hadoop
-```
-
-
-0x07. 
-```
-# 01. 获取JAVA_HOME环境变量
-# 配置该文件前需要知道Java的安装路径，用来设置JAVA_HOME环境变量，可以使用下面命令行查看安装路径
-$ update-alternatives --config java
-# 完整的路径为
-# /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# 我们只取前面的部分 /usr/lib/jvm/java-7-openjdk-amd64
-
-# 02. 配置.bashrc文件
-$ sudo vi ~/.bashrc
-# 在文件末尾追加下面内容，然后保存退出
-#####################################################################
-#HADOOP VARIABLES START
-export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
-export HADOOP_INSTALL=/usr/local/hadoop
-export PATH=$PATH:$HADOOP_INSTALL/bin
-export PATH=$PATH:$HADOOP_INSTALL/sbin
-export HADOOP_MAPRED_HOME=$HADOOP_INSTALL
-export HADOOP_COMMON_HOME=$HADOOP_INSTALL
-export HADOOP_HDFS_HOME=$HADOOP_INSTALL
-export YARN_HOME=$HADOOP_INSTALL
-export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_INSTALL/lib/native
-export HADOOP_OPTS="-Djava.library.path=$HADOOP_INSTALL/lib"
-#HADOOP VARIABLES END
-#####################################################################
 ```
 
 
-0x08. 
+0x04. 配置hdfs-site.xml
 ```
-# 编辑/usr/local/hadoop/etc/hadoop/hadoop-env.sh
-# 执行下面命令，打开该文件的编辑窗口
-# sudo vi /usr/local/hadoop/etc/hadoop/hadoop-env.sh
-# 找到JAVA_HOME变量，修改此变量如下
-# export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64 
-```
+/usr/local/hadoop/etc/hadoop/hdfs-site.xml用来配置集群中每台主机都可用，指定主机上作为namenode和datanode的目录。
 
+$ cd /usr/local/hadoop
+$ sudo mkdir -p hdfs/{data,name}
 
-0x09. 
+# 你也可以在别的路径下创建上图的文件夹，名称也可以与上图不同，但是需要和hdfs-site.xml中的配置一致。
+# 编辑器打开hdfs-site.xml
+# sudo vi etc/hadoop/hdfs-site.xml
 
-```
-$ hadoop version
 ```
 
+0x05. 格式化hdfs
 ```
-# 单机模式安装完成，下面通过执行hadoop自带实例WordCount验证是否安装成功
+01. 
+$ sudo vi /etc/group
+root:x:0:hadoop
 
-# 在/usr/local/hadoop路径下创建input文件夹
-$ cd $HADOOP_COMMON_HOME
-$ sudo mkdir input
+02. 
+$ hdfs namenode -format    
+只需要执行一次即可，如果在hadoop已经使用后再次执行，会清除掉hdfs上的所有数据。
 
-# 拷贝README.txt到input
-$ sudo cp README.txt input
+```
 
-# sudo权限执行WordCount
-$ cd $HADOOP_COMMON_HOME
-$ sudo bin/hadoop jar share/hadoop/mapreduce/sources/hadoop-mapreduce-examples-2.6.4-sources.jar org.apache.hadoop.examples.WordCount input output
+0x06. 启动hadoop
+```
+经过上文所描述配置和操作后，下面就可以启动这个单节点的集群    
 
-# 执行结果
-hadoop@ubuntu:/usr/local/hadoop$ sudo bin/hadoop jar share/hadoop/mapreduce/sources/hadoop-mapreduce-examples-2.6.4-sources.jar org.apache.hadoop.examples.WordCount input output
-16/07/11 13:25:20 INFO Configuration.deprecation: session.id is deprecated. Instead, use dfs.metrics.session-id
-16/07/11 13:25:20 INFO jvm.JvmMetrics: Initializing JVM Metrics with processName=JobTracker, sessionId=
-16/07/11 13:25:20 INFO input.FileInputFormat: Total input paths to process : 1
-16/07/11 13:25:20 INFO mapreduce.JobSubmitter: number of splits:1
-16/07/11 13:25:21 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_local1467934750_0001
-16/07/11 13:25:22 INFO mapreduce.Job: The url to track the job: http://localhost:8080/
-16/07/11 13:25:22 INFO mapreduce.Job: Running job: job_local1467934750_0001
-16/07/11 13:25:22 INFO mapred.LocalJobRunner: OutputCommitter set in config null
-16/07/11 13:25:22 INFO mapred.LocalJobRunner: OutputCommitter is org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter
-16/07/11 13:25:22 INFO mapred.LocalJobRunner: Waiting for map tasks
-16/07/11 13:25:22 INFO mapred.LocalJobRunner: Starting task: attempt_local1467934750_0001_m_000000_0
-16/07/11 13:25:22 INFO mapred.Task:  Using ResourceCalculatorProcessTree : [ ]
-16/07/11 13:25:22 INFO mapred.MapTask: Processing split: file:/usr/local/hadoop-2.6.4/input/README.txt:0+1366
-16/07/11 13:25:23 INFO mapreduce.Job: Job job_local1467934750_0001 running in uber mode : false
-16/07/11 13:25:23 INFO mapred.MapTask: (EQUATOR) 0 kvi 26214396(104857584)
-16/07/11 13:25:23 INFO mapred.MapTask: mapreduce.task.io.sort.mb: 100
-16/07/11 13:25:23 INFO mapred.MapTask: soft limit at 83886080
-16/07/11 13:25:23 INFO mapred.MapTask: bufstart = 0; bufvoid = 104857600
-16/07/11 13:25:23 INFO mapred.MapTask: kvstart = 26214396; length = 6553600
-16/07/11 13:25:23 INFO mapreduce.Job:  map 0% reduce 0%
-16/07/11 13:25:23 INFO mapred.MapTask: Map output collector class = org.apache.hadoop.mapred.MapTask$MapOutputBuffer
-16/07/11 13:25:23 INFO mapred.LocalJobRunner: 
-16/07/11 13:25:23 INFO mapred.MapTask: Starting flush of map output
-16/07/11 13:25:23 INFO mapred.MapTask: Spilling map output
-16/07/11 13:25:23 INFO mapred.MapTask: bufstart = 0; bufend = 2055; bufvoid = 104857600
-16/07/11 13:25:23 INFO mapred.MapTask: kvstart = 26214396(104857584); kvend = 26213684(104854736); length = 713/6553600
-16/07/11 13:25:23 INFO mapred.MapTask: Finished spill 0
-16/07/11 13:25:24 INFO mapred.Task: Task:attempt_local1467934750_0001_m_000000_0 is done. And is in the process of committing
-16/07/11 13:25:24 INFO mapred.LocalJobRunner: map
-16/07/11 13:25:24 INFO mapred.Task: Task 'attempt_local1467934750_0001_m_000000_0' done.
-16/07/11 13:25:24 INFO mapred.LocalJobRunner: Finishing task: attempt_local1467934750_0001_m_000000_0
-16/07/11 13:25:24 INFO mapred.LocalJobRunner: map task executor complete.
-16/07/11 13:25:24 INFO mapred.LocalJobRunner: Waiting for reduce tasks
-16/07/11 13:25:24 INFO mapred.LocalJobRunner: Starting task: attempt_local1467934750_0001_r_000000_0
-16/07/11 13:25:24 INFO mapred.Task:  Using ResourceCalculatorProcessTree : [ ]
-16/07/11 13:25:24 INFO mapred.ReduceTask: Using ShuffleConsumerPlugin: org.apache.hadoop.mapreduce.task.reduce.Shuffle@5f9c3821
-16/07/11 13:25:24 INFO reduce.MergeManagerImpl: MergerManager: memoryLimit=333971456, maxSingleShuffleLimit=83492864, mergeThreshold=220421168, ioSortFactor=10, memToMemMergeOutputsThreshold=10
-16/07/11 13:25:24 INFO reduce.EventFetcher: attempt_local1467934750_0001_r_000000_0 Thread started: EventFetcher for fetching Map Completion Events
-16/07/11 13:25:24 INFO reduce.LocalFetcher: localfetcher#1 about to shuffle output of map attempt_local1467934750_0001_m_000000_0 decomp: 1832 len: 1836 to MEMORY
-16/07/11 13:25:24 INFO reduce.InMemoryMapOutput: Read 1832 bytes from map-output for attempt_local1467934750_0001_m_000000_0
-16/07/11 13:25:24 INFO reduce.MergeManagerImpl: closeInMemoryFile -> map-output of size: 1832, inMemoryMapOutputs.size() -> 1, commitMemory -> 0, usedMemory ->1832
-16/07/11 13:25:24 INFO reduce.EventFetcher: EventFetcher is interrupted.. Returning
-16/07/11 13:25:24 INFO mapred.LocalJobRunner: 1 / 1 copied.
-16/07/11 13:25:24 INFO reduce.MergeManagerImpl: finalMerge called with 1 in-memory map-outputs and 0 on-disk map-outputs
-16/07/11 13:25:24 INFO mapred.Merger: Merging 1 sorted segments
-16/07/11 13:25:24 INFO mapred.Merger: Down to the last merge-pass, with 1 segments left of total size: 1823 bytes
-16/07/11 13:25:24 INFO reduce.MergeManagerImpl: Merged 1 segments, 1832 bytes to disk to satisfy reduce memory limit
-16/07/11 13:25:24 INFO reduce.MergeManagerImpl: Merging 1 files, 1836 bytes from disk
-16/07/11 13:25:24 INFO reduce.MergeManagerImpl: Merging 0 segments, 0 bytes from memory into reduce
-16/07/11 13:25:24 INFO mapred.Merger: Merging 1 sorted segments
-16/07/11 13:25:24 INFO mapred.Merger: Down to the last merge-pass, with 1 segments left of total size: 1823 bytes
-16/07/11 13:25:24 INFO mapred.LocalJobRunner: 1 / 1 copied.
-16/07/11 13:25:24 INFO Configuration.deprecation: mapred.skip.on is deprecated. Instead, use mapreduce.job.skiprecords
-16/07/11 13:25:24 INFO mapred.Task: Task:attempt_local1467934750_0001_r_000000_0 is done. And is in the process of committing
-16/07/11 13:25:24 INFO mapred.LocalJobRunner: 1 / 1 copied.
-16/07/11 13:25:24 INFO mapred.Task: Task attempt_local1467934750_0001_r_000000_0 is allowed to commit now
-16/07/11 13:25:24 INFO output.FileOutputCommitter: Saved output of task 'attempt_local1467934750_0001_r_000000_0' to file:/usr/local/hadoop-2.6.4/output/_temporary/0/task_local1467934750_0001_r_000000
-16/07/11 13:25:24 INFO mapred.LocalJobRunner: reduce > reduce
-16/07/11 13:25:24 INFO mapred.Task: Task 'attempt_local1467934750_0001_r_000000_0' done.
-16/07/11 13:25:24 INFO mapred.LocalJobRunner: Finishing task: attempt_local1467934750_0001_r_000000_0
-16/07/11 13:25:24 INFO mapred.LocalJobRunner: reduce task executor complete.
-16/07/11 13:25:24 INFO mapreduce.Job:  map 100% reduce 100%
-16/07/11 13:25:24 INFO mapreduce.Job: Job job_local1467934750_0001 completed successfully
-16/07/11 13:25:24 INFO mapreduce.Job: Counters: 33
-	File System Counters
-		FILE: Number of bytes read=547480
-		FILE: Number of bytes written=1057226
-		FILE: Number of read operations=0
-		FILE: Number of large read operations=0
-		FILE: Number of write operations=0
-	Map-Reduce Framework
-		Map input records=31
-		Map output records=179
-		Map output bytes=2055
-		Map output materialized bytes=1836
-		Input split bytes=110
-		Combine input records=179
-		Combine output records=131
-		Reduce input groups=131
-		Reduce shuffle bytes=1836
-		Reduce input records=131
-		Reduce output records=131
-		Spilled Records=262
-		Shuffled Maps =1
-		Failed Shuffles=0
-		Merged Map outputs=1
-		GC time elapsed (ms)=0
-		CPU time spent (ms)=0
-		Physical memory (bytes) snapshot=0
-		Virtual memory (bytes) snapshot=0
-		Total committed heap usage (bytes)=404750336
-	Shuffle Errors
-		BAD_ID=0
-		CONNECTION=0
-		IO_ERROR=0
-		WRONG_LENGTH=0
-		WRONG_MAP=0
-		WRONG_REDUCE=0
-	File Input Format Counters 
-		Bytes Read=1366
-	File Output Format Counters 
-		Bytes Written=1326
+01. 执行启动命令：
+sbin/start-dfs.sh    
+执行该命令时，如果有yes /no提示，输入yes，回车即可。    
+
+02. 
+接下来，执行：
+sbin/start-yarn.sh    
+
+03. 
+执行完这两个命令后，Hadoop会启动并运行    
+
+04. 
+执行 jps命令，会看到Hadoop相关的进程，如下图：
+
+05.
+# 浏览器打开 http://localhost:50070/，会看到hdfs管理页面
+
+06. 
+浏览器打开http://localhost:8088，会看到hadoop进程管理页面
+
+```
 
 
+0x07. WordCount验证
+```
+01. dfs上创建input目录
+$ sudo bin/hadoop fs -mkdir -p input
 
-# 执行 cat output/*，查看字符统计结果
-$ ls -lh output/
-$ cat ./output/part-r-00000 
-$ cat ./output/_SUCCESS 
-$ cat output/*
-$ exit
+02.
+把hadoop目录下的README.txt拷贝到dfs新建的input里
+$ sudo hadoop fs -copyFromLocal README.txt input
+
+03. 运行WordCount
+$ sudo hadoop jar share/hadoop/mapreduce/sources/hadoop-mapreduce-examples-2.4.0-sources.jar org.apache.hadoop.examples.WordCount input output
+ 
+04.
+# 可以看到执行过程
+ 
+05. 
+# 运行完毕后，查看单词统计结果
+$ hadoop fs -cat output/*
 ```
 
 
