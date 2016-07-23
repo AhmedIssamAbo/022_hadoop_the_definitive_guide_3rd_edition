@@ -45,7 +45,9 @@ $ sudo vi yarn-site.xml
 
 0x03. 创建和配置maper-site.xml
 ```
-# 默认情况下，/usr/local/hadoop/etc/hadoop/文件夹下有mapred-site.xml.template文件，我们要复制该文件，并命名为mapred-site.xml，该文件用于指定MapReduce使用的框架。
+# 默认情况下，/usr/local/hadoop/etc/hadoop/文件夹下有mapred-site.xml.template文件，
+# 我们要复制该文件，并命名为mapred-site.xml，该文件用于指定MapReduce使用的框架。
+#
 # 复制并重命名
 # cp mapred-site.xml.template mapred-site.xml
 # 编辑器打开此新建文件
