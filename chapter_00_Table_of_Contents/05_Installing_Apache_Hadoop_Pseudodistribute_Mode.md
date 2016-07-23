@@ -74,6 +74,21 @@ $ sudo mkdir -p hdfs/{data,name}
 # 编辑器打开hdfs-site.xml
 # sudo vi etc/hadoop/hdfs-site.xml
 
+<configuration>
+    <property>
+        <name>dfs.replication</name>
+        <value>1</value>
+    </property>
+    <property>
+        <name>dfs.namenode.name.dir</name>
+        <value>file:/usr/local/hadoop/hdfs/name</value>
+    </property>
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>file:/usr/local/hadoop/hdfs/data</value>
+    </property>
+</configuration>
+
 ```
 
 0x05. 格式化hdfs
