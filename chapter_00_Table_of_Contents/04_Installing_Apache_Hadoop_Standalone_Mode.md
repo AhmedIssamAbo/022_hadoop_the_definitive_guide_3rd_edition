@@ -62,12 +62,28 @@ $ sudo apt-get install openjdk-7-jdk
 $ java -version
 ```
 
+0x06. 安装hadoop-2.7.2
+```
+# 01. 下载hadoop-2.7.2.tar.gz
+$ sudo apt-get install axel
+$ axel -n 20 http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-2.7.2/hadoop-2.7.2.tar.gz
+
+# 02. 将hadoop安装到/usr/local下
+$ sudo tar -xvf hadoop-2.7.2.tar.gz -C /usr/local/hadoop
+$ sudo tar -xvf hadoop-2.7.2.tar.gz -C /usr/local/
+
+# 03. 赋予hadoop用户对该文件夹的读写权限
+$ cd /usr/local/
+$ sudo chown root:root hadoop-2.7.2/
+$ sudo chmod g+w /usr/local/hadoop-2.7.2/
+$ sudo ln -s hadoop-2.7.2/ hadoop
+```
 
 0x06. 安装hadoop-2.6.4
 ```
 # 01. 下载hadoop-2.6.4.tar.gz
 $ sudo apt-get install axel
-$ axel -n 30 http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-2.6.4/hadoop-2.6.4.tar.gz
+$ axel -n 20 http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-2.6.4/hadoop-2.6.4.tar.gz
 
 # 02. 将hadoop安装到/usr/local下
 $ sudo tar -xvf hadoop-2.6.4.tar.gz -C /usr/local/hadoop
