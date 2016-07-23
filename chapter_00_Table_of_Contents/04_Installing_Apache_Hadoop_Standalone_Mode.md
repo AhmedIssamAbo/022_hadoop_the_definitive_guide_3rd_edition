@@ -154,7 +154,8 @@ $ sudo cp README.txt input
 
 # sudo权限执行WordCount
 $ cd $HADOOP_COMMON_HOME
-$ sudo bin/hadoop jar share/hadoop/mapreduce/sources/hadoop-mapreduce-examples-2.6.4-sources.jar org.apache.hadoop.examples.WordCount input output
+$ sudo bin/hadoop jar share/hadoop/mapreduce/sources/hadoop-mapreduce-examples-2.6.4-sources.jar 
+org.apache.hadoop.examples.WordCount input output
 
 # 执行结果
 hadoop@ubuntu:/usr/local/hadoop$ sudo bin/hadoop jar share/hadoop/mapreduce/sources/hadoop-mapreduce-examples-2.6.4-sources.jar org.apache.hadoop.examples.WordCount input output
