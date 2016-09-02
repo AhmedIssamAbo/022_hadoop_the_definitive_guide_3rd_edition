@@ -1,0 +1,32 @@
+#
+# Filename: list_16_2.scheme
+# Author:   jerry_0824
+# Email:    63935127#qq.com
+# Date:     2016-09-02
+# Time:     22:18
+# Version:  v1.0.0
+#
+
+Scheme sourceScheme = new TextLine(new Fields("line"));
+Tap source = new Hfs(sourcesScheme, inputPath);
+
+Scheme sinkScheme = new TextLine();
+rap sink = new Hfs(sinkScheme, outputPath, SinkMode, REPLACE);
+
+Pipe assembly = new Pipe("wordcount");
+
+String regexString = "(?<!\\pL)(?=\\pL)[^ ]*(?<=\\pL)(?!\\pL)";
+Function regex = new RegexGenerator(new Fields("word"), regexString);
+assemebly = new Each(assembly, new Fields("line"), regex);
+
+assembly = new GroupBy(assebmbly, new Fields("word"));
+
+Aggregator count = new Cont(new fields("count"));
+assembly = new Every(assembly, count);
+
+assembly = new GroupBy(assembly, new Fields("count"), new Fields("word"));
+
+FlowConnector flowConnector = new FlowConnector();
+Flow flow = flowConnector.connect("word-count", source, sink, assembly);
+
+flow.complete();
