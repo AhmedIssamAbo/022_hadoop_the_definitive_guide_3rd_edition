@@ -19,6 +19,3 @@ Cloudera's Distribution Including Apache Hadoop
 12. Whirr——在云中运行Hadoop和相关服务的库和脚本
 13. Mahoot——可扩展的机器学习和数据挖掘算法
 ```
-
-
-
