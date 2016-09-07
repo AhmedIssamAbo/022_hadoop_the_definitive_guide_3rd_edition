@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/022_Hadoop_The_Definitive_Guide_3rd_Edition.iml" filepath="$PROJECT_DIR$/.idea/022_Hadoop_The_Definitive_Guide_3rd_Edition.iml" />
       <module fileurl="file://$PROJECT_DIR$/022_hadoop_the_definitive_guide_3rd_edition.iml" filepath="$PROJECT_DIR$/022_hadoop_the_definitive_guide_3rd_edition.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chapter_13_HBase/chapter_13_HBase.iml" filepath="$PROJECT_DIR$/chapter_13_HBase/chapter_13_HBase.iml" />
       <module fileurl="file://$PROJECT_DIR$/chapter_14_ZooKeeper/chapter_14_ZooKeeper.iml" filepath="$PROJECT_DIR$/chapter_14_ZooKeeper/chapter_14_ZooKeeper.iml" />
       <module fileurl="file://$PROJECT_DIR$/chapter_16_Case_Studies/chapter_16_Case_Studies.iml" filepath="$PROJECT_DIR$/chapter_16_Case_Studies/chapter_16_Case_Studies.iml" />
     </modules>
