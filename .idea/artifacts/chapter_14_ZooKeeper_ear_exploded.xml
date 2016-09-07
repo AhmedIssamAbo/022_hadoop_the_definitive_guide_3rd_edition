@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="chapter_14_ZooKeeper:ear exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/chapter_14_ZooKeeper_ear_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="chapter_14_ZooKeeper/javaeeApplication/javaEEApplication" />
+    </root>
+  </artifact>
+</component>
