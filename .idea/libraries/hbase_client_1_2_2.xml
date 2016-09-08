@@ -1,11 +1,6 @@
 <component name="libraryTable">
   <library name="hbase-client-1.2.2">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/chapter_13_HBase/lib/hbase-client-1.2.2.jar!/" />
-      <root url="jar://$PROJECT_DIR$/chapter_13_HBase/lib/hbase-common-1.2.2.jar!/" />
-      <root url="jar://$PROJECT_DIR$/chapter_13_HBase/lib/hadoop-mapreduce-client-core-2.5.1.jar!/" />
-      <root url="jar://$PROJECT_DIR$/chapter_13_HBase/lib/hadoop-common-2.5.1.jar!/" />
-    </CLASSES>
+    <CLASSES />
     <JAVADOC />
     <SOURCES />
   </library>
