@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="022_hadoop_the_definitive_guide_3rd_edition:ear exploded2">
+    <output-path>$PROJECT_DIR$/out/artifacts/022_hadoop_the_definitive_guide_3rd_edition_ear_exploded2</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="022_hadoop_the_definitive_guide_3rd_edition/javaeeApplication/javaEEApplication" />
+    </root>
+  </artifact>
+</component>
