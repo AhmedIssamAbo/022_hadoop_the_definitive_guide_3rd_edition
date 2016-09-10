@@ -3,6 +3,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/022_hadoop_the_definitive_guide_3rd_edition.iml" filepath="$PROJECT_DIR$/022_hadoop_the_definitive_guide_3rd_edition.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chapter_02_MapReduce/chapter_02_MapReduce.iml" filepath="$PROJECT_DIR$/chapter_02_MapReduce/chapter_02_MapReduce.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chapter_03_The_Hadoop_Distributed_Filesystem/chapter_03_The_Hadoop_Distributed_Filesystem.iml" filepath="$PROJECT_DIR$/chapter_03_The_Hadoop_Distributed_Filesystem/chapter_03_The_Hadoop_Distributed_Filesystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chapter_04_Hadoop_I_O/chapter_04_Hadoop_I_O.iml" filepath="$PROJECT_DIR$/chapter_04_Hadoop_I_O/chapter_04_Hadoop_I_O.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chapter_05_Developing_a_MapReduce_Application/chapter_05_Developing_a_MapReduce_Application.iml" filepath="$PROJECT_DIR$/chapter_05_Developing_a_MapReduce_Application/chapter_05_Developing_a_MapReduce_Application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chapter_07_MapReduce_Types_and_Formats/chapter_07_MapReduce_Types_and_Formats.iml" filepath="$PROJECT_DIR$/chapter_07_MapReduce_Types_and_Formats/chapter_07_MapReduce_Types_and_Formats.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chapter_08_MapReduce_Features/chapter_08_MapReduce_Features.iml" filepath="$PROJECT_DIR$/chapter_08_MapReduce_Features/chapter_08_MapReduce_Features.iml" />
       <module fileurl="file://$PROJECT_DIR$/chapter_11_Pig/chapter_11_Pig.iml" filepath="$PROJECT_DIR$/chapter_11_Pig/chapter_11_Pig.iml" />
       <module fileurl="file://$PROJECT_DIR$/chapter_12_Hive/chapter_12_Hive.iml" filepath="$PROJECT_DIR$/chapter_12_Hive/chapter_12_Hive.iml" />
       <module fileurl="file://$PROJECT_DIR$/chapter_13_HBase/chapter_13_HBase.iml" filepath="$PROJECT_DIR$/chapter_13_HBase/chapter_13_HBase.iml" />
