@@ -1,7 +1,7 @@
 import java.io.IOException;
 
 /**
- * Filename: ConfigWatcher.jsp
+ * Filename: ConfigWatcher.java
  * Author:   jerry_0824
  * Email:    63935127#qq.com
  * Date:     2016-09-07
