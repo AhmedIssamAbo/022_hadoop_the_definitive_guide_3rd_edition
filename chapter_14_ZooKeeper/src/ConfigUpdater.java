@@ -3,7 +3,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Filename: ConfigUpdater.jsp
+ * Filename: ConfigUpdater.java
  * Author:   jerry_0824
  * Email:    63935127#qq.com
  * Date:     2016-09-07
