@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * Filename: ConnectionWatcher.jsp
+ * Filename: ConnectionWatcher.java
  * Author:   jerry_0824
  * Email:    63935127#qq.com
  * Date:     2016-09-07
