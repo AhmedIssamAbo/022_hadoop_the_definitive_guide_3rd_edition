@@ -1,5 +1,5 @@
 /**
- * Filename: JoinGroup.jsp
+ * Filename: JoinGroup.java
  * Author:   jerry_0824
  * Email:    63935127#qq.com
  * Date:     2016-09-07
